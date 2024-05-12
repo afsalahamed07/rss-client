@@ -1,28 +1,23 @@
 <script>
     import { User } from '../domain/User';
+    import { loginService } from "../services/LoginService.js";
+
     let username = '';
     let password = '';
 
     async function login() {
-        if (username.trim() !== '' && password.trim() !== '') {
-            const response = await fetch('http://127.0.0.1:8080/api/v2/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username: username.trim(),
-                    password: password.trim()
-                })
-            });
+        if ( username.trim() !== '' && password.trim() !== '' ) {
+            try {
+                const response = await loginService( username, password )
+                const data = response.json();
+                const user = new User( username, data.token );
 
-            if (response.ok) {
-                const data = await response.json();
-                const user = new User(username, data.token);
-            } else {
-                console.error('Login failed');
+                sessionStorage.setItem( 'user', JSON.stringify( user ) );
+                console.log( 'User logged in successfully')
+                window.location.href = '/app';
+            } catch ( error ) {
+                console.error( error );
             }
-
         }
     }
 </script>
@@ -42,7 +37,8 @@
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" bind:value={password}>
-                    </div> <button class="btn btn-primary" on:click={login}>Login</button>
+                    </div>
+                    <button class="btn btn-primary" on:click={login}>Login</button>
                 </div>
             </div>
         </div>

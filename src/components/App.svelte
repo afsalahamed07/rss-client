@@ -1,15 +1,13 @@
 <script>
-	import { onMount } from 'svelte';
 	import { Feed } from './domain/Feed';
 	import { fetchFeedData } from './services/ApiService';
 	import Entry from './components/Entry.svelte';
 	import Navbar from './components/Navbar.svelte';
 
-	let rssUrl = 'https://www.wired.com/feed/rss'; // Default RSS URL
 	let feed = null;
 	let error = null;
 
-	async function fetchFeed( url = rssUrl ) {
+	async function fetchFeed( ) {
 		try {
 			const feedData = await fetchFeedData( `http://127.0.0.1:8080/fetch_feed?rss=${ encodeURIComponent( url ) }` );
 			feed = new Feed( feedData );
@@ -24,7 +22,6 @@
 		fetchFeed( rssUrl );
 	}
 
-	onMount( () => fetchFeed( rssUrl ) );
 </script>
 
 <Navbar on:updateFeed={handleUpdateFeed} />

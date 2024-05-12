@@ -1,7 +1,7 @@
 <script>
-	import Login from '../../components/Login.svelte';
+    import App from "../../components/App.svelte";
     import Navbar from "../../components/Navbar.svelte";
 </script>
 
 <Navbar />
-<Login />
+<App />
