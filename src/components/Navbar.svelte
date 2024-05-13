@@ -1,25 +1,16 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
-
-    let inputValue = '';
-    const dispatch = createEventDispatcher();
-
-    function updateFeed() {
-        if ( inputValue.trim() !== '' ) {
-            dispatch( 'updateFeed', { rssUrl: inputValue.trim() } );
-        }
-    }
 </script>
 
-<nav class = "navbar">
-    <a class = "navbar-brand" href = "#">RSS Reader</a>
-    <div class = "row">
-        <div class = "col">
-            <input type = "text" class = "form-control" placeholder = "Enter RSS URL"
-                   bind:value = {inputValue} on:keyup.enter = {updateFeed}>
-        </div>
-        <div class = "col">
-            <button class = "btn btn-outline-primary" on:click = {updateFeed}>Load Feed</button>
+<nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="/RSS%20icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            RSS Client
+        </a>
+        <div class="row">
+            <div class="col nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </div>
         </div>
     </div>
 </nav>

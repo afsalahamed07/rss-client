@@ -12,3 +12,11 @@ vite.config.ts.timestamp-*
 
 .idea
 package-lock.json
+
+
+.eslintrc.cjs
+.eslintignore
+.prettierignore
+.prettierrc.cjs
+.npmrc
+.prettierrc
