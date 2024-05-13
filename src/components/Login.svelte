@@ -9,11 +9,10 @@
         if ( username.trim() !== '' && password.trim() !== '' ) {
             try {
                 const response = await loginService( username, password )
-                const data = response.json();
-                const user = new User( username, data.token );
+                const data = await response.json();
+                const user = new User( username, data.accessToken );
 
                 sessionStorage.setItem( 'user', JSON.stringify( user ) );
-                console.log( 'User logged in successfully')
                 window.location.href = '/app';
             } catch ( error ) {
                 console.error( error );
