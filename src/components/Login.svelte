@@ -13,7 +13,7 @@
                 const user = new User( username, data.accessToken );
 
                 sessionStorage.setItem( 'user', JSON.stringify( user ) );
-                window.location.href = '/app';
+                window.location.href = '/';
             } catch ( error ) {
                 console.error( error );
             }
