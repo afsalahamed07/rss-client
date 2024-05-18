@@ -20,3 +20,4 @@ package-lock.json
 .prettierrc.cjs
 .npmrc
 .prettierrc
+dump.rdb
