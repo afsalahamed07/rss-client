@@ -9,6 +9,9 @@
         </a>
         <div class="row">
             <div class="col nav-item">
+                <a class="nav-link" href="/subscribe">Subscribe</a>
+            </div>
+            <div class="col nav-item">
                 <a class="nav-link" href="/login">Login</a>
             </div>
         </div>
